@@ -22,7 +22,7 @@ app.use('/api/categories', categoryRoutes)
 if (isProd) {
   const distPath = join(__dirname, '..', 'dist')
   app.use(express.static(distPath))
-  app.get('*', (_, res) => res.sendFile(join(distPath, 'index.html')))
+  app.get(/(.*)/, (_, res) => res.sendFile(join(distPath, 'index.html')))
 }
 
 app.listen(PORT, () => {
